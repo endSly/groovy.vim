@@ -172,11 +172,6 @@ syn keyword groovyJDKMethods    count tokenize asList flatten immutable intersec
 syn keyword groovyJDKMethods    subMap append asWritable eachByte eachLine eachFile 
 syn cluster groovyTop add=groovyJDKBuiltin,groovyJDKOperOverl,groovyJDKMethods
 
-" no useful I think, so I comment it..
-"if filereadable(expand("<sfile>:p:h")."/groovyid.vim")
- " source <sfile>:p:h/groovyid.vim
-"endif
-
 if exists("groovy_space_errors")
   if !exists("groovy_no_trail_space_error")
     syn match   groovySpaceError  "\s\+$"
@@ -191,15 +186,8 @@ syn region  groovyLabelRegion     transparent matchgroup=groovyLabel start="\<ca
 syn match   groovyUserLabel       "^\s*[_$a-zA-Z][_$a-zA-Z0-9_]*\s*:"he=e-1 contains=groovyLabel
 syn keyword groovyLabel           default
 
-if !exists("groovy_allow_cpp_keywords")
-  syn keyword groovyError auto delete extern friend inline redeclared
-  syn keyword groovyError register signed sizeof struct template typedef union
-  syn keyword groovyError unsigned operator
-endif
-
 " The following cluster contains all groovy groups except the contained ones
 syn cluster groovyTop add=groovyExternal,groovyError,groovyError,groovyBranch,groovyLabelRegion,groovyLabel,groovyConditional,groovyRepeat,groovyBoolean,groovyConstant,groovyTypedef,groovyOperator,groovyType,groovyType,groovyStatement,groovyStorageClass,groovyAssert,groovyExceptions,groovyMethodDecl,groovyClassDecl,groovyClassDecl,groovyClassDecl,groovyScopeDecl,groovyError,groovyError2,groovyUserLabel,groovyLangObject
-
 
 " Comments
 syn keyword groovyTodo             contained TODO FIXME XXX
