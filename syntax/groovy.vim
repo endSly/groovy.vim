@@ -68,6 +68,7 @@ endif
 "syn match groovyOK "\.\.\."
 
 " keyword definitions
+
 syn keyword groovyExternal        native package
 syn match groovyExternal          "\<import\(\s\+static\>\)\?"
 syn keyword groovyError           goto const
@@ -95,6 +96,7 @@ syn match   groovyClassDecl       "[^.]\s*\<class\>"ms=s+1
 syn keyword groovyBranch          break continue nextgroup=groovyUserLabelRef skipwhite
 syn match   groovyUserLabelRef    "\k\+" contained
 syn keyword groovyScopeDecl       public protected private abstract
+syn keyword groovyDefine          def
 
 
 if exists("groovy_highlight_groovy_lang_ids") || exists("groovy_highlight_groovy_lang") || exists("groovy_highlight_all")
@@ -155,22 +157,6 @@ syn match groovyOperator ">\{2,3}"
 syn match groovyOperator "->"
 syn match groovyExternal		'^#!.*[/\\]groovy\>'
 syn match groovyExceptions        "\<Exception\>\|\<[A-Z]\{1,}[a-zA-Z0-9]*Exception\>"
-
-" Groovy JDK stuff
-syn keyword groovyJDKBuiltin    as def in
-syn keyword groovyJDKOperOverl  div minus plus abs round power multiply 
-syn keyword groovyJDKMethods 	each call inject sort print println 
-syn keyword groovyJDKMethods    getAt putAt size push pop toList getText writeLine eachLine readLines
-syn keyword groovyJDKMethods    withReader withStream withWriter withPrintWriter write read leftShift 
-syn keyword groovyJDKMethods    withWriterAppend readBytes splitEachLine
-syn keyword groovyJDKMethods    newInputStream newOutputStream newPrintWriter newReader newWriter 
-syn keyword groovyJDKMethods    compareTo next previous isCase 
-syn keyword groovyJDKMethods    times step toInteger upto any collect dump every find findAll grep
-syn keyword groovyJDKMethods    inspect invokeMethods join 
-syn keyword groovyJDKMethods    getErr getIn getOut waitForOrKill
-syn keyword groovyJDKMethods    count tokenize asList flatten immutable intersect reverse reverseEach
-syn keyword groovyJDKMethods    subMap append asWritable eachByte eachLine eachFile 
-syn cluster groovyTop add=groovyJDKBuiltin,groovyJDKOperOverl,groovyJDKMethods
 
 if exists("groovy_space_errors")
   if !exists("groovy_no_trail_space_error")
@@ -384,14 +370,15 @@ if version >= 508 || !exists("did_groovy_syn_inits")
   GroovyHiLink groovyUserLabelRef	groovyUserLabel
   GroovyHiLink groovyLabel		Label
   GroovyHiLink groovyUserLabel		Label
-  GroovyHiLink groovyConditional	Conditional
+  GroovyHiLink groovyConditional        Conditional
   GroovyHiLink groovyRepeat		Repeat
   GroovyHiLink groovyExceptions		Exception
   GroovyHiLink groovyAssert 		Statement
-  GroovyHiLink groovyStorageClass	StorageClass
+  GroovyHiLink groovyStorageClass	Define
   GroovyHiLink groovyMethodDecl		groovyStorageClass
   GroovyHiLink groovyClassDecl		groovyStorageClass
   GroovyHiLink groovyScopeDecl		groovyStorageClass
+  GroovyHiLink groovyDefine		groovyStorageClass
   GroovyHiLink groovyBoolean		Boolean
   GroovyHiLink groovySpecial		Special
   GroovyHiLink groovySpecialError	Error
