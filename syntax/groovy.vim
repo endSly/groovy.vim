@@ -73,10 +73,10 @@ syn keyword groovyExternal        native package
 syn match groovyExternal          "\<import\(\s\+static\>\)\?"
 syn keyword groovyError           goto const
 syn keyword groovyConditional     if else switch
-syn keyword groovyRepeat          while for do
+syn keyword groovyRepeat          while for do with
 syn keyword groovyBoolean         true false
 syn keyword groovyConstant        null
-syn keyword groovyTypedef         this super
+syn keyword groovyTypedef         this super it delegate owner
 syn keyword groovyOperator        new instanceof
 syn keyword groovyType            boolean char byte short int long float double
 syn keyword groovyType            void
