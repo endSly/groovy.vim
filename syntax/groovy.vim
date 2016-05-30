@@ -79,7 +79,7 @@ syn keyword groovyTypedef         this super
 syn keyword groovyOperator        new instanceof
 syn keyword groovyType            boolean char byte short int long float double
 syn keyword groovyType            void
-syn keyword groovyType		  Integer Double Date Boolean Float String Array Vector List
+syn keyword groovyType            Integer Double Date Boolean Float String Array Vector List
 syn keyword groovyStatement       return
 syn keyword groovyStorageClass    static synchronized transient volatile final strictfp serializable
 syn keyword groovyExceptions      throw try catch finally
@@ -88,7 +88,8 @@ syn keyword groovyMethodDecl      synchronized throws
 syn keyword groovyClassDecl       extends implements interface
 " to differentiate the keyword class from MyClass.class we use a match here
 syn match   groovyTypedef         "\.\s*\<class\>"ms=s+1
-syn keyword groovyClassDecl         enum
+syn keyword groovyClassDecl       enum
+syn keyword groovyClassDecl       trait
 syn match   groovyClassDecl       "^class\>"
 syn match   groovyClassDecl       "[^.]\s*\<class\>"ms=s+1
 syn keyword groovyBranch          break continue nextgroup=groovyUserLabelRef skipwhite
