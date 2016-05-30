@@ -1,0 +1,4 @@
+--langdef=groovy
+--langmap=groovy:.groovy
+--langmap=groovy:.gradle
+--langmap=groovy:.gson
