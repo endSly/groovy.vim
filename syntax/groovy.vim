@@ -53,6 +53,8 @@ if !exists("main_syntax")
   let main_syntax='groovy'
 endif
 
+let groovy_highlight_all='true'
+
 " don't use standard HiLink, it will not work with included syntax files
 if version < 508
   command! -nargs=+ GroovyHiLink hi link <args>
@@ -68,6 +70,7 @@ endif
 "syn match groovyOK "\.\.\."
 
 " keyword definitions
+
 
 syn keyword groovyExternal        native package
 syn match groovyExternal          "\<import\(\s\+static\)\?\>"
@@ -98,55 +101,13 @@ syn match   groovyUserLabelRef    "\k\+" contained
 syn keyword groovyScopeDecl       public protected private abstract
 syn keyword groovyDefine          def
 
-
 if exists("groovy_highlight_groovy_lang_ids") || exists("groovy_highlight_groovy_lang") || exists("groovy_highlight_all")
   " groovy.lang.*
-  syn keyword groovyLangClass  Closure MetaMethod GroovyObject
-  
-  syn match groovyJavaLangClass "\<System\>"
-  syn keyword groovyJavaLangClass  Cloneable Comparable Runnable Serializable Boolean Byte Class Object
-  syn keyword groovyJavaLangClass  Character CharSequence ClassLoader Compiler
-  " syn keyword groovyJavaLangClass  Integer Double Float Long 
-  syn keyword groovyJavaLangClass  InheritableThreadLocal Math Number Object Package Process
-  syn keyword groovyJavaLangClass  Runtime RuntimePermission InheritableThreadLocal
-  syn keyword groovyJavaLangClass  SecurityManager Short StrictMath StackTraceElement
-  syn keyword groovyJavaLangClass  StringBuffer Thread ThreadGroup
-  syn keyword groovyJavaLangClass  ThreadLocal Throwable Void ArithmeticException
-  syn keyword groovyJavaLangClass  ArrayIndexOutOfBoundsException AssertionError
-  syn keyword groovyJavaLangClass  ArrayStoreException ClassCastException
-  syn keyword groovyJavaLangClass  ClassNotFoundException
-  syn keyword groovyJavaLangClass  CloneNotSupportedException Exception
-  syn keyword groovyJavaLangClass  IllegalAccessException
-  syn keyword groovyJavaLangClass  IllegalArgumentException
-  syn keyword groovyJavaLangClass  IllegalMonitorStateException
-  syn keyword groovyJavaLangClass  IllegalStateException
-  syn keyword groovyJavaLangClass  IllegalThreadStateException
-  syn keyword groovyJavaLangClass  IndexOutOfBoundsException
-  syn keyword groovyJavaLangClass  InstantiationException InterruptedException
-  syn keyword groovyJavaLangClass  NegativeArraySizeException NoSuchFieldException
-  syn keyword groovyJavaLangClass  NoSuchMethodException NullPointerException
-  syn keyword groovyJavaLangClass  NumberFormatException RuntimeException
-  syn keyword groovyJavaLangClass  SecurityException StringIndexOutOfBoundsException
-  syn keyword groovyJavaLangClass  UnsupportedOperationException
-  syn keyword groovyJavaLangClass  AbstractMethodError ClassCircularityError
-  syn keyword groovyJavaLangClass  ClassFormatError Error ExceptionInInitializerError
-  syn keyword groovyJavaLangClass  IllegalAccessError InstantiationError
-  syn keyword groovyJavaLangClass  IncompatibleClassChangeError InternalError
-  syn keyword groovyJavaLangClass  LinkageError NoClassDefFoundError
-  syn keyword groovyJavaLangClass  NoSuchFieldError NoSuchMethodError
-  syn keyword groovyJavaLangClass  OutOfMemoryError StackOverflowError
-  syn keyword groovyJavaLangClass  ThreadDeath UnknownError UnsatisfiedLinkError
-  syn keyword groovyJavaLangClass  UnsupportedClassVersionError VerifyError
-  syn keyword groovyJavaLangClass  VirtualMachineError
 
-  syn keyword groovyJavaLangObject clone equals finalize getClass hashCode
-  syn keyword groovyJavaLangObject notify notifyAll toString wait
+  syn match groovyClass   "\<[A-Z][A-Za-z0-9]*\>"
 
-  GroovyHiLink groovyLangClass                   groovyConstant
-  GroovyHiLink groovyJavaLangClass               groovyExternal
-  GroovyHiLink groovyJavaLangObject              groovyConstant
-  syn cluster groovyTop add=groovyJavaLangObject,groovyJavaLangClass,groovyLangClass
-  syn cluster groovyClasses add=groovyJavaLangClass,groovyLangClass
+  syn cluster groovyTop add=groovyClass
+  syn cluster groovyClasses add=groovyClass
 endif
 
 
@@ -372,6 +333,7 @@ if version >= 508 || !exists("did_groovy_syn_inits")
   GroovyHiLink groovyUserLabel		Label
   GroovyHiLink groovyConditional        Conditional
   GroovyHiLink groovyRepeat		Repeat
+  GroovyHiLink groovyClass              Type
   GroovyHiLink groovyExceptions		Exception
   GroovyHiLink groovyAssert 		Statement
   GroovyHiLink groovyStorageClass	Define
